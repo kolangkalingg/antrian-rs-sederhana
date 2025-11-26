@@ -1,0 +1,26 @@
+[
+    {
+        "tanggal": "2025-11-26 08:04:15",
+        "nama": "kairi",
+        "umur": "15",
+        "poli": "Umum",
+        "keluhan": "demam",
+        "nomor_antrian": "U-01"
+    },
+    {
+        "tanggal": "2025-11-26 08:04:27",
+        "nama": "loid",
+        "umur": "15",
+        "poli": "Gigi",
+        "keluhan": "sakit gigi",
+        "nomor_antrian": "G-01"
+    },
+    {
+        "tanggal": "2025-11-26 08:04:41",
+        "nama": "risky",
+        "umur": "15",
+        "poli": "Mata",
+        "keluhan": "minus",
+        "nomor_antrian": "M-01"
+    }
+]
