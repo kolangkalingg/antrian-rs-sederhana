@@ -221,14 +221,50 @@ def urutkan_data():
 
     data = muat_file(FILE_DATA)
 
+    if not data:
+        print("Tidak ada data untuk diurutkan.")
+        input("ENTER...")
+        bersihkan_layar()
+        return
+
+    # ==== BUBBLE SORT 
+    def bubble_sort(arr, key):
+        n = len(arr)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                # ---------------------------------------------------
+                # Penentu nilai perbandingan berdasarkan kategori
+                # ---------------------------------------------------
+                if key == "nama":
+                    a = arr[j]["nama"].lower()
+                    b = arr[j+1]["nama"].lower()
+                elif key == "umur":
+                    a = int(arr[j]["umur"])
+                    b = int(arr[j+1]["umur"])
+                elif key == "poli":
+                    a = arr[j]["poli"]
+                    b = arr[j+1]["poli"]
+                elif key == "tanggal":
+                    a = arr[j]["tanggal"]
+                    b = arr[j+1]["tanggal"]
+                else:
+                    return arr
+
+                if a > b:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]  # Swap
+        return arr
+
+    # ---------------------------------------------------
+    # Menentukan kategori sorting
+    # ---------------------------------------------------
     if pilih == "1":
-        data_sorted = sorted(data, key=lambda x: x["nama"].lower())
+        hasil = bubble_sort(data, "nama")
     elif pilih == "2":
-        data_sorted = sorted(data, key=lambda x: int(x["umur"]))
+        hasil = bubble_sort(data, "umur")
     elif pilih == "3":
-        data_sorted = sorted(data, key=lambda x: x["poli"])
+        hasil = bubble_sort(data, "poli")
     elif pilih == "4":
-        data_sorted = sorted(data, key=lambda x: x["tanggal"])
+        hasil = bubble_sort(data, "tanggal")
     else:
         print("Pilihan tidak valid!")
         input("ENTER...")
@@ -236,11 +272,12 @@ def urutkan_data():
         return
 
     print("\n=== Hasil Sorting ===")
-    for d in data_sorted:
+    for d in hasil:
         print(f"{d['nomor_antrian']} | {d['nama']} | {d['umur']} | {d['poli']} | {d['keluhan']} | {d['tanggal']}")
 
     input("ENTER...")
     bersihkan_layar()
+
 
 def menu():
     while True:
